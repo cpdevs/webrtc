@@ -571,8 +571,8 @@ func iceServerToValue(server ICEServer) js.Value {
 		"urls":     stringsToValue(server.URLs), // required
 		"username": stringToValueOrUndefined(server.Username),
 		// Note: credential and credentialType are not currently supported.
-		// "credential":     interfaceToValueOrUndefined(server.Credential),
-		// "credentialType": stringEnumToValueOrUndefined(server.CredentialType.String()),
+		"credential":     interfaceToValueOrUndefined(server.Credential),
+		"credentialType": stringEnumToValueOrUndefined(server.CredentialType.String()),
 	})
 }
 
@@ -609,8 +609,8 @@ func valueToICEServer(iceServerValue js.Value) ICEServer {
 		URLs:     valueToStrings(iceServerValue.Get("urls")), // required
 		Username: valueToStringOrZero(iceServerValue.Get("username")),
 		// Note: Credential and CredentialType are not currently supported.
-		// Credential: iceServerValue.Get("credential"),
-		// CredentialType: newICECredentialType(valueToStringOrZero(iceServerValue.Get("credentialType"))),
+		Credential:     iceServerValue.Get("credential"),
+		CredentialType: newICECredentialType(valueToStringOrZero(iceServerValue.Get("credentialType"))),
 	}
 }
 
