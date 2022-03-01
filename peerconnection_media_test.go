@@ -15,13 +15,13 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cpdevs/webrtc/v3/pkg/media"
 	"github.com/pion/logging"
 	"github.com/pion/randutil"
 	"github.com/pion/rtcp"
 	"github.com/pion/rtp"
 	"github.com/pion/sdp/v3"
 	"github.com/pion/transport/test"
-	"github.com/pion/webrtc/v3/pkg/media"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -1137,7 +1137,7 @@ func TestPeerConnection_Simulcast_Probe(t *testing.T) {
 }
 
 // Assert that CreateOffer returns an error for a RTPSender with no codecs
-// pion/webrtc#1702
+// cpdevs/webrtc#1702
 func TestPeerConnection_CreateOffer_NoCodecs(t *testing.T) {
 	lim := test.TimeOut(time.Second * 30)
 	defer lim.Stop()

@@ -53,7 +53,7 @@ unset IFS
 if [ ${#CONTRIBUTORS[@]} -ne 0 ]; then
 	cat >$AUTHORS_PATH <<-'EOH'
 # Thank you to everyone that made Pion possible. If you are interested in contributing
-# we would love to have you https://github.com/pion/webrtc/wiki/Contributing
+# we would love to have you https://github.com/cpdevs/webrtc/wiki/Contributing
 #
 # This file is auto generated, using git to list all individuals contributors.
 # see `.github/generate-authors.sh` for the scripting

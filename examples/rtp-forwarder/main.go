@@ -9,11 +9,11 @@ import (
 	"os"
 	"time"
 
+	"github.com/cpdevs/webrtc/v3"
+	"github.com/cpdevs/webrtc/v3/examples/internal/signal"
 	"github.com/pion/interceptor"
 	"github.com/pion/rtcp"
 	"github.com/pion/rtp"
-	"github.com/pion/webrtc/v3"
-	"github.com/pion/webrtc/v3/examples/internal/signal"
 )
 
 type udpConn struct {

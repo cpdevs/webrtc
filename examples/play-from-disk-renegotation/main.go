@@ -11,10 +11,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/cpdevs/webrtc/v3"
+	"github.com/cpdevs/webrtc/v3/pkg/media"
+	"github.com/cpdevs/webrtc/v3/pkg/media/ivfreader"
 	"github.com/pion/randutil"
-	"github.com/pion/webrtc/v3"
-	"github.com/pion/webrtc/v3/pkg/media"
-	"github.com/pion/webrtc/v3/pkg/media/ivfreader"
 )
 
 var peerConnection *webrtc.PeerConnection //nolint

@@ -20,10 +20,10 @@ func newDetachedDataChannel(dc *DataChannel) *detachedDataChannel {
 
 	// Wire up callbacks
 	dc.OnMessage(func(msg DataChannelMessage) {
-		read <- msg // pion/webrtc/projects/15
+		read <- msg // cpdevs/webrtc/projects/15
 	})
 
-	// pion/webrtc/projects/15
+	// cpdevs/webrtc/projects/15
 
 	return &detachedDataChannel{
 		dc:   dc,

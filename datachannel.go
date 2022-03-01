@@ -12,9 +12,9 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/cpdevs/webrtc/v3/pkg/rtcerr"
 	"github.com/pion/datachannel"
 	"github.com/pion/logging"
-	"github.com/pion/webrtc/v3/pkg/rtcerr"
 )
 
 const dataChannelBufferSize = math.MaxUint16 // message size limit for Chromium
@@ -313,7 +313,7 @@ func (d *DataChannel) onError(err error) {
 	}
 }
 
-// See https://github.com/pion/webrtc/issues/1516
+// See https://github.com/cpdevs/webrtc/issues/1516
 // nolint:gochecknoglobals
 var rlBufPool = sync.Pool{New: func() interface{} {
 	return make([]byte, dataChannelBufferSize)

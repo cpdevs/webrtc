@@ -103,7 +103,7 @@ func (m *muxErrorConn) Read(b []byte) (n int, err error) {
    * io.ErrShortBuffer and packetio.ErrTimeout don't end the read loop
    * io.EOF ends the loop
 
-   pion/webrtc#1720
+   cpdevs/webrtc#1720
 */
 func TestNonFatalRead(t *testing.T) {
 	// Limit runtime in case of deadlocks

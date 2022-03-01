@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/pion/webrtc/v3"
+	"github.com/cpdevs/webrtc/v3"
 )
 
 var api *webrtc.API //nolint
