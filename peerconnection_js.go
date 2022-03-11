@@ -107,7 +107,7 @@ func (pc *PeerConnection) OnDataChannel(f func(*DataChannel)) {
 func (pc *PeerConnection) OnTrack(f func()) {
 	fmt.Println("THE ONTRACK IS CALLED")
 	if pc.onTrackHandler != nil {
-		oldHandler := pc.onTrackhandler
+		oldHandler := pc.onTrackHandler
 		defer oldHandler.Release()
 	}
 	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
