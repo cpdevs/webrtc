@@ -28,7 +28,7 @@ type PeerConnection struct {
 	onICEConnectionStateChangeHandler *js.Func
 	onICECandidateHandler             *js.Func
 	onICEGatheringStateChangeHandler  *js.Func
-	onTrackHandler                    *js.Func
+	// onTrackHandler                    *js.Func
 
 	// Used by GatheringCompletePromise
 	onGatherCompleteHandler func()
