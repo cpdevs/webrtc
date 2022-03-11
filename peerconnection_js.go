@@ -113,7 +113,7 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		fmt.Println("ON TRACK HANDLER IS CALLED NOW")
 		t := TrackRemote{}
 		r := RTPReceiver{}
-		go f(t, r)
+		go f(&t, &r)
 		return js.Undefined()
 	})
 	pc.onTrackHandler = &onTrackHandler
