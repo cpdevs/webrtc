@@ -3,6 +3,7 @@ module github.com/cpdevs/webrtc/v3
 go 1.13
 
 require (
+	github.com/cpdevs/mediadevices v0.3.4
 	github.com/onsi/ginkgo v1.16.5 // indirect
 	github.com/onsi/gomega v1.17.0 // indirect
 	github.com/pion/datachannel v1.5.2
@@ -10,6 +11,7 @@ require (
 	github.com/pion/ice/v2 v2.2.1
 	github.com/pion/interceptor v0.1.7
 	github.com/pion/logging v0.2.2
+	github.com/pion/mediadevices v0.3.2
 	github.com/pion/randutil v0.1.0
 	github.com/pion/rtcp v1.2.9
 	github.com/pion/rtp v1.7.4

@@ -5,6 +5,7 @@
 package webrtc
 
 import (
+	"fmt"
 	"syscall/js"
 
 	"github.com/cpdevs/webrtc/v3/pkg/rtcerr"
@@ -27,6 +28,7 @@ type PeerConnection struct {
 	onICEConnectionStateChangeHandler *js.Func
 	onICECandidateHandler             *js.Func
 	onICEGatheringStateChangeHandler  *js.Func
+	onTrackHandler                    *js.Func
 
 	// Used by GatheringCompletePromise
 	onGatherCompleteHandler func()
@@ -100,6 +102,20 @@ func (pc *PeerConnection) OnDataChannel(f func(*DataChannel)) {
 	})
 	pc.onDataChannelHandler = &onDataChannelHandler
 	pc.underlying.Set("ondatachannel", onDataChannelHandler)
+}
+
+func (pc *PeerConnection) OnTrack(f func()) {
+	fmt.Println("THE ONTRACK IS CALLED")
+	if pc.onTrackHandler != nil {
+		oldHandler := pc.onTrackhandler
+		defer oldHandler.Release()
+	}
+	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		fmt.Println("ON TRACK HANDLER IS CALLED NOW ")
+		return js.Undefined()
+	})
+	pc.onTrackHandler = &onTrackHandler
+	pc.underlying.Set("ontrack", onTrackHandler)
 }
 
 // OnNegotiationNeeded sets an event handler which is invoked when
