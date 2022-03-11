@@ -109,7 +109,7 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		oldHandler := pc.onTrackHandler
 		defer oldHandler.Release()
 	}
-	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) (TrackRemote, RTPReceiver) {
 		fmt.Println("ON TRACK HANDLER IS CALLED NOW ")
 		t := TrackRemote{}
 		r := RTPReceiver{}
