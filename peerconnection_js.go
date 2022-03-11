@@ -104,7 +104,7 @@ func (pc *PeerConnection) OnDataChannel(f func(*DataChannel)) {
 	pc.underlying.Set("ondatachannel", onDataChannelHandler)
 }
 
-func (pc *PeerConnection) OnTrack(f func(t *TrackRemote, r *RTPReceiver)) {
+func (pc *PeerConnection) OnTrack(f func(t TrackRemote, r RTPReceiver)) {
 	fmt.Println("THE ONTRACK IS CALLED", t)
 	fmt.Println("THE RECEIVER ", r)
 	if pc.onTrackHandler != nil {
