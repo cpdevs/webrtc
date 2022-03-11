@@ -104,16 +104,16 @@ func (pc *PeerConnection) OnDataChannel(f func(*DataChannel)) {
 	pc.underlying.Set("ondatachannel", onDataChannelHandler)
 }
 
-func (pc *PeerConnection) OnTrack(f func(t TrackRemote, r RTPReceiver)) {
-	fmt.Println("THE ONTRACK IS CALLED", t)
-	fmt.Println("THE RECEIVER ", r)
+func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 	if pc.onTrackHandler != nil {
 		oldHandler := pc.onTrackHandler
 		defer oldHandler.Release()
 	}
 	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		fmt.Println("ON TRACK HANDLER IS CALLED NOW ")
-		return js.Undefined()
+		t := TrackRemote{}
+		r := RTPReceiver{}
+		return t.underlying, r.underlying
 	})
 	pc.onTrackHandler = &onTrackHandler
 	pc.underlying.Set("ontrack", onTrackHandler)
