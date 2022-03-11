@@ -5,7 +5,6 @@
 package webrtc
 
 import (
-	"fmt"
 	"syscall/js"
 
 	"github.com/cpdevs/webrtc/v3/pkg/rtcerr"
@@ -104,22 +103,22 @@ func (pc *PeerConnection) OnDataChannel(f func(*DataChannel)) {
 	pc.underlying.Set("ondatachannel", onDataChannelHandler)
 }
 
-func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
-	fmt.Println("On track beginning")
-	if pc.onTrackHandler != nil {
-		oldHandler := pc.onTrackHandler
-		defer oldHandler.Release()
-	}
-	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		fmt.Println("ON TRACK HANDLER IS CALLED NOW")
-		t := TrackRemote{}
-		r := RTPReceiver{}
-		go f(&t, &r)
-		return js.Undefined()
-	})
-	pc.onTrackHandler = &onTrackHandler
-	pc.underlying.Set("ontrack", onTrackHandler)
-}
+// func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
+// 	fmt.Println("On track beginning")
+// 	if pc.onTrackHandler != nil {
+// 		oldHandler := pc.onTrackHandler
+// 		defer oldHandler.Release()
+// 	}
+// 	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+// 		fmt.Println("ON TRACK HANDLER IS CALLED NOW")
+// 		t := TrackRemote{}
+// 		r := RTPReceiver{}
+// 		go f(&t, &r)
+// 		return js.Undefined()
+// 	})
+// 	pc.onTrackHandler = &onTrackHandler
+// 	pc.underlying.Set("ontrack", onTrackHandler)
+// }
 
 // OnNegotiationNeeded sets an event handler which is invoked when
 // a change has occurred which requires session negotiation
