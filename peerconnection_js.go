@@ -105,6 +105,7 @@ func (pc *PeerConnection) OnDataChannel(f func(*DataChannel)) {
 }
 
 func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
+	fmt.Println("On track beginning")
 	if pc.onTrackHandler != nil {
 		oldHandler := pc.onTrackHandler
 		defer oldHandler.Release()
