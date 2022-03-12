@@ -120,6 +120,7 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 	})
 	pc.onTrackHandler = &onTrackHandler
 	fmt.Println("This one is executed well")
+	fmt.Println("The ontrack handler now is ", pc.onTrackHandler)
 	pc.underlying.Set("ontrack", onTrackHandler)
 }
 
