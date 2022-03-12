@@ -98,6 +98,7 @@ func (pc *PeerConnection) OnDataChannel(f func(*DataChannel)) {
 			api:        pc.api,
 		}
 		go f(dataChannel)
+		fmt.Println("THE ON DATA CHANNEL HANDLER IS ALSO CALED WTF")
 		return js.Undefined()
 	})
 	pc.onDataChannelHandler = &onDataChannelHandler
@@ -112,9 +113,9 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 	}
 	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		fmt.Println("ON TRACK HANDLER IS CALLED NOW")
-		t := TrackRemote{}
-		r := RTPReceiver{}
-		go f(&t, &r)
+		// t := TrackRemote{}
+		// r := RTPReceiver{}
+		// go f(&t, &r)
 		return js.Undefined()
 	})
 	pc.onTrackHandler = &onTrackHandler
