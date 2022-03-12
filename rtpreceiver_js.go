@@ -16,5 +16,10 @@ type RTPReceiver struct {
 
 func (r *RTPReceiver) Track() string {
 	fmt.Println("THE UNDERLYING IS ", r.underlying)
-	return r.underlying.Get("track").String()
+	parameters := r.underlying.Get("getParameters")
+	if parameters.IsUndefined() {
+		fmt.Println("PARAMETERS FROM THE RTCP UNDERLYING ARE UNDEFINED")
+	}
+
+	return "test"
 }
