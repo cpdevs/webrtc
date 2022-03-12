@@ -118,6 +118,7 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		return js.Undefined()
 	})
 	pc.onTrackHandler = &onTrackHandler
+	fmt.Println("This one is executed well")
 	pc.underlying.Set("ontrack", onTrackHandler)
 }
 
