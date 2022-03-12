@@ -67,9 +67,11 @@ func (d *DataChannel) OnMessage(f func(msg DataChannelMessage)) {
 		oldHandler := d.onMessageHandler
 		defer oldHandler.Release()
 	}
+	fmt.Println("On message is called")
 	onMessageHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		// cpdevs/webrtc/projects/15
 		data := args[0].Get("data")
+		fmt.Println("Handler of on message is also handled")
 		go func() {
 			// valueToDataChannelMessage may block when handling 'Blob' data
 			// so we need to call it from a new routine. See:
