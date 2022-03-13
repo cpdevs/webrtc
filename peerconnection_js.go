@@ -116,6 +116,7 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		fmt.Println("Args 0 get track are ", args[0].Get("track"))
 		fmt.Println("Receiver is ", args[0].Get("receiver"))
 		fmt.Println("Streams are ", args[0].Get("streams"))
+		fmt.Println("Trying to access the 0 index of streams ", args[0].Get("streams"))
 		t := &TrackRemote{
 			underlying: args[0].Get("track"),
 		}
