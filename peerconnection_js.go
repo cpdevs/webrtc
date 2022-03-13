@@ -113,6 +113,9 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 	}
 	onTrackHandler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		fmt.Println("ON TRACK HANDLER IS CALLED NOW")
+		fmt.Println("Args 0 get track are ", args[0].Get("track"))
+		fmt.Println("Receiver is ", args[0].Get("receiver"))
+		fmt.Println("Streams are ", args[0].Get("streams"))
 		t := &TrackRemote{}
 		r := &RTPReceiver{}
 		go f(t, r)
