@@ -116,8 +116,12 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		fmt.Println("Args 0 get track are ", args[0].Get("track"))
 		fmt.Println("Receiver is ", args[0].Get("receiver"))
 		fmt.Println("Streams are ", args[0].Get("streams"))
-		t := &TrackRemote{}
-		r := &RTPReceiver{}
+		t := &TrackRemote{
+			underlying: args[0].Get("track"),
+		}
+		r := &RTPReceiver{
+			underlying: args[0].Get("receiver"),
+		}
 		go f(t, r)
 		return js.Undefined()
 	})
