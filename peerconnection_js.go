@@ -119,12 +119,12 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		fmt.Println("Trying to access the 0 index of streams ", args[0].Get("streams"))
 		fmt.Println("The type of streams is :", args[0].Get("streams").Type())
 		streams := args[0].Get("streams")
-		stream := streams.Call("slice", 1, 2).Call("shift")
 		t := &TrackRemote{
 			underlying: args[0].Get("track"),
 		}
 		if t.underlying.Get("kind").String() == "video" {
 			fmt.Println("Will set src object of video with stream ", stream)
+			stream := streams.Call("slice", 1, 2).Call("shift")
 			js.Global().Get("document").Call("getElementById", "webrtc_video").Set("srcObject", stream)
 			js.Global().Get("document").Call("getElementById", "webrtc_video").Set("id", "kire")
 		}
