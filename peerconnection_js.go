@@ -119,6 +119,7 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		fmt.Println("Trying to access the 0 index of streams ", args[0].Get("streams"))
 		fmt.Println("The type of streams is ", args[0].Get("streams").Type())
 		streams := args[0].Get("streams")
+		fmt.Println("The test is ", streams.Call("slice", 0, 1).Call("shift"))
 		bytes := make([]byte, 2)
 		_ = js.CopyBytesToGo(bytes, streams)
 		fmt.Println("The bytes are ", bytes)
