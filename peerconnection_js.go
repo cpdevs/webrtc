@@ -120,6 +120,9 @@ func (pc *PeerConnection) OnTrack(f func(*TrackRemote, *RTPReceiver)) {
 		t := &TrackRemote{
 			underlying: args[0].Get("track"),
 		}
+		if t.underlying.Get("kind").String() == "video" {
+			js.Global().Get("document").Call("getElementById", "webrtc_video").Set("srcObject", args[0].Get("streams")[0])
+		}
 		fmt.Println("Track kind is ", t.underlying.Get("kind"))
 		r := &RTPReceiver{
 			underlying: args[0].Get("receiver"),
